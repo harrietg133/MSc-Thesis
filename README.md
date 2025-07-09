@@ -1,2 +1,2 @@
 # MSc-Thesis
-MSc Thesis 2025. All code used to analyse and manipulate my data.
+All code used to analyse and manipulate data in a University of Plymouth Masters Thesis.
