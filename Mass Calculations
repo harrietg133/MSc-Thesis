@@ -1,0 +1,34 @@
+import pandas as pd
+import matplotlib.pyplot as plt
+
+# Define seawater density (kg/m³)
+seawater_density = 1025  # kg/m³
+
+# Read volume data from CSV file
+# Assuming your CSV has a column named 'Volume' with volume values in m³
+# Replace 'your_data.csv' with your actual file path
+df = pd.read_csv('BodyVolumes.csv')
+
+# If your volume column has a different name, adjust accordingly
+# For example: volume_column = 'Volume_m3'
+volume_column = 'Volume_m3'
+
+# Calculate mass using the formula: mass = density × volume
+df['Mass (kg)'] = seawater_density * df[volume_column]
+
+# Display the first few rows of the results
+print("Mass calculation results:")
+print(df.head())
+
+# Optional: Save the results to a new CSV file
+df.to_csv('mass_calculation_results.csv', index=False)
+
+# Optional: Visualize the relationship
+plt.figure(figsize=(10, 6))
+plt.scatter(df[volume_column], df['Mass (kg)'])
+plt.plot(df[volume_column], df['Mass (kg)'], 'r--')
+plt.xlabel(f'Volume ({volume_column})')
+plt.ylabel('Mass (kg)')
+plt.title('Mass vs Volume for Seawater')
+plt.grid(True)
+plt.show()
